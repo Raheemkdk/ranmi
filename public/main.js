@@ -9,28 +9,45 @@
 //     console.log(data)
 //   })
 // }
-console.log('I am here')
-let visInformation = document.querySelector('#output')
-const searching = document.querySelector('button').addEventListener('click', school)
-function school() {
-const userInput = document.querySelector('input').value;
+// console.log('I am here')
+// let visInformation = document.querySelector('#output')
+// const searching = document.querySelector('button').addEventListener('click', school)
+// function school() {
+// const userInput = document.querySelector('input').value;
 
-  fetch(`https://api.districtapi.dev/v1/districts?address=${encodeURIComponent(userInput)}`, {
-    headers: {
-      'X-API-Key': 'da_live_92ac9ce4aa17e4d8b01655d6465a32935e579765ff7ab55652a7249303f7f93c'
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-    visInformation.innerText = data
+//   fetch(`https://api.districtapi.dev/v1/districts?address=${encodeURIComponent(userInput)}`, {
+//     headers: {
+//       'X-API-Key': 'da_live_92ac9ce4aa17e4d8b01655d6465a32935e579765ff7ab55652a7249303f7f93c'
+//     }
+//   })
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log(data);
+//     visInformation.innerText = data
     
-  })
-  .catch(error => {
-    console.error(error);
-  });
-}
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+// }
 
+let visInformation = document.querySelector('#output');
+
+document.querySelector('button').addEventListener('click', school);
+
+function school() {
+  const userInput = document.querySelector('input').value;
+
+  fetch(`/api/districts?address=${encodeURIComponent(userInput)}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      visInformation.innerText = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
 // const thumbUp = document.getElementsByClassName("fa-thumbs-up");
 // const unpaid = document.getElementsByClassName("unpaidBtn");
 // const thumbDown = document.getElementsByClassName("fa-thumbs-down");

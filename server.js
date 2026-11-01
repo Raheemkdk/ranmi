@@ -54,3 +54,30 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
+
+
+
+
+app.use(express.static(__dirname));
+
+app.get('/api/districts', async (req, res) => {
+  const address = req.query.address;
+
+  try {
+    const response = await fetch(
+      `https://api.districtapi.dev/v1/districts?address=${encodeURIComponent(address)}`,
+      {
+        headers: {
+          'X-API-Key': process.env.DISTRICT_API_KEY
+        }
+      }
+    );
+
+    const data = await response.json();
+    res.status(response.status).json(data);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'API request failed' });
+  }
+});
