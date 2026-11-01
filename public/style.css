@@ -1,0 +1,48 @@
+body{
+  /* padding-top:80px; */
+  margin:0;
+  word-wrap:break-word;
+  background:url(img/demoBack.gif);
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.jumbotron{
+  background-color: rgba(0, 0, 139, 0.719);
+  display: flex;
+  justify-content: space-between;
+}
+.signup{
+  display: flex;
+  gap:20px;
+  /* color: black; */
+  a{
+    color:black
+}
+}
+h1{
+  margin:0;
+}
+.feature{
+  width: 75%;
+  display:flex;
+  justify-content: space-between;
+}
+.cards{
+  display: flex;
+  flex-direction: column;
+}
+img{
+  height: 200px;
+}
+/* Index EJS. The Landing Page */
+.container{
+  /* background: blue; */
+}
+.paid{
+  background-color: green;
+}
+.unpaid{
+  background-color: bisque;
+}
